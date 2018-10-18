@@ -40,6 +40,10 @@ class ViewController: UIViewController {
             C *= A
             A = 0
         }
+        else if (op == "div"){
+            C /= A
+            A = 0
+        }
         op = "none"
         resultLabel.text = String(C)
     }
@@ -118,6 +122,18 @@ class ViewController: UIViewController {
                 A = 0}
         }
         op = "mul"
+    }
+    
+    @IBAction func divButton(_ sender: Any) {
+        if (op != "none"){
+            endOperation()
+        }
+        else {
+            if(A != 0){
+                C = A
+                A = 0}
+        }
+        op = "div"
     }
     
     
