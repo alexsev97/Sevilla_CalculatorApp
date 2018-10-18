@@ -64,6 +64,10 @@ class ViewController: UIViewController {
         numberButton(num: 9)
     }
     
+    @IBAction func zeroButton(_ sender: Any) {
+        numberButton(num: 0)
+    }
+    
     @IBAction func plusButton(_ sender: Any) {
         plus = true
         C += A
