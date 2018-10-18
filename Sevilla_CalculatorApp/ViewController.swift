@@ -9,9 +9,8 @@
 import UIKit
 
 var A = 0
-var B = 0
 var C = 0
-var plus = false
+var op = "none"
 
 class ViewController: UIViewController {
     
@@ -26,6 +25,19 @@ class ViewController: UIViewController {
             A += num
         }
         resultLabel.text = String(A)
+    }
+    
+    func endOperation(){
+        if (op == "plus"){
+            C += A
+            A = 0
+        }
+        if (op == "minus"){
+            C -= A
+            A = 0
+        }
+        op = "none"
+        resultLabel.text = String(C)
     }
     
     @IBAction func oneButton(_ sender: Any) {
@@ -69,17 +81,42 @@ class ViewController: UIViewController {
     }
     
     @IBAction func plusButton(_ sender: Any) {
-        plus = true
-        C += A
-        A = 0
-        resultLabel.text = String(C)
+        if (op != "none"){
+            endOperation()
+        }
+        else {
+            if(A != 0){
+                C = A
+                A = 0}
+        }
+        op = "plus"
+    }
+    
+    @IBAction func minusButton(_ sender: Any) {
+        if (op != "none"){
+            endOperation()
+        }
+        else {
+            if(A != 0){
+                C = A
+                A = 0}
+        }
+        op = "minus"
     }
     
     @IBAction func equalButton(_ sender: Any) {
-        C += A
-        A = 0
+        if (op != "none"){
+            endOperation()
+        }
         resultLabel.text = String(C)
     }
+    
+    @IBAction func eraseButton(_ sender: Any) {
+        A = 0
+        C = 0
+        resultLabel.text = String(C)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
