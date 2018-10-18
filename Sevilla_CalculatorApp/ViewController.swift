@@ -18,20 +18,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
     
     func numberButton(num: Int){
-        if (plus){
-            C += num
-            plus = false
+        if (A == 0){
+            A = num
         }
         else {
-            C = num
+            A *= 10
+            A += num
         }
-        resultLabel.text = String(num)
+        resultLabel.text = String(A)
     }
     
     @IBAction func oneButton(_ sender: Any) {
         numberButton(num: 1)
     }
-    
     
     @IBAction func twoButton(_ sender: Any) {
         numberButton(num: 2)
@@ -65,18 +64,18 @@ class ViewController: UIViewController {
         numberButton(num: 9)
     }
     
-    
-    
-    
     @IBAction func plusButton(_ sender: Any) {
         plus = true
+        C += A
+        A = 0
         resultLabel.text = String(C)
     }
     
     @IBAction func equalButton(_ sender: Any) {
+        C += A
+        A = 0
         resultLabel.text = String(C)
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
