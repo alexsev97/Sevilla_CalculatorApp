@@ -11,23 +11,36 @@ import UIKit
 var A = 0
 var B = 0
 var C = 0
+var plus = false
 
 class ViewController: UIViewController {
     
     @IBOutlet weak var resultLabel: UILabel!
     
+    func numberButton(num: Int){
+        if (plus){
+            C += num
+            plus = false
+        }
+        else {
+            C = num
+        }
+        resultLabel.text = String(num)
+    }
+    
     @IBAction func oneButton(_ sender: Any) {
-        A = 1
+        numberButton(num: 1)
     }
     
     
     @IBAction func twoButton(_ sender: Any) {
-        B = 2
+        numberButton(num: 2)
     }
     
     
     @IBAction func plusButton(_ sender: Any) {
-        C = A + B
+        plus = true
+        resultLabel.text = String(C)
     }
     
     @IBAction func equalButton(_ sender: Any) {
