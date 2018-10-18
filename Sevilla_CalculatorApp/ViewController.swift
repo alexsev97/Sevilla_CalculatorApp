@@ -32,8 +32,12 @@ class ViewController: UIViewController {
             C += A
             A = 0
         }
-        if (op == "minus"){
+        else if (op == "minus"){
             C -= A
+            A = 0
+        }
+        else if (op == "mul"){
+            C *= A
             A = 0
         }
         op = "none"
@@ -103,6 +107,19 @@ class ViewController: UIViewController {
         }
         op = "minus"
     }
+    
+    @IBAction func multiplyButton(_ sender: Any) {
+        if (op != "none"){
+            endOperation()
+        }
+        else {
+            if(A != 0){
+                C = A
+                A = 0}
+        }
+        op = "mul"
+    }
+    
     
     @IBAction func equalButton(_ sender: Any) {
         if (op != "none"){

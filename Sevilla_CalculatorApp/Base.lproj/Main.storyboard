@@ -53,13 +53,22 @@
                                     <action selector="plusButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zJ8-RP-6rz"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="thb-IG-wbb">
-                                <rect key="frame" x="248" y="540" width="73" height="53"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f69-u1-o5h">
+                                <rect key="frame" x="151" y="543" width="73" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="="/>
+                                <state key="normal" title="*"/>
                                 <connections>
-                                    <action selector="equalButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WSv-RR-9XG"/>
+                                    <action selector="multiplyButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JaS-pg-hIv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vG-dc-KoZ">
+                                <rect key="frame" x="248" y="462" width="73" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="-"/>
+                                <connections>
+                                    <action selector="minusButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x2S-5C-DE1"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EnB-nB-com">
@@ -141,13 +150,13 @@
                                     <action selector="eraseButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dCe-D1-GTM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vG-dc-KoZ">
-                                <rect key="frame" x="248" y="462" width="73" height="53"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="thb-IG-wbb">
+                                <rect key="frame" x="248" y="538" width="73" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="-"/>
+                                <state key="normal" title="="/>
                                 <connections>
-                                    <action selector="minusButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x2S-5C-DE1"/>
+                                    <action selector="equalButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WSv-RR-9XG"/>
                                 </connections>
                             </button>
                         </subviews>
