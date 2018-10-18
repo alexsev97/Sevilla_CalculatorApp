@@ -37,6 +37,36 @@ class ViewController: UIViewController {
         numberButton(num: 2)
     }
     
+    @IBAction func threeButton(_ sender: Any) {
+        numberButton(num: 3)
+    }
+    
+    @IBAction func fourButton(_ sender: Any) {
+        numberButton(num: 4)
+    }
+    
+    @IBAction func fiveButton(_ sender: Any) {
+        numberButton(num: 5)
+    }
+    
+    @IBAction func sixButton(_ sender: Any) {
+        numberButton(num: 6)
+    }
+    
+    @IBAction func sevenButton(_ sender: Any) {
+        numberButton(num: 7)
+    }
+    
+    @IBAction func eightButton(_ sender: Any) {
+        numberButton(num: 8)
+    }
+    
+    @IBAction func nineButton(_ sender: Any) {
+        numberButton(num: 9)
+    }
+    
+    
+    
     
     @IBAction func plusButton(_ sender: Any) {
         plus = true
