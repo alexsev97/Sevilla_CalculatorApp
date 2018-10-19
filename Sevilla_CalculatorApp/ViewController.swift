@@ -8,9 +8,9 @@
 
 import UIKit
 
-var A = 0
-var C = 0
-var dec = 10
+var A = "0"
+var C = "0"
+var decYN = false
 var op = "none"
 
 class ViewController: UIViewController {
@@ -18,35 +18,44 @@ class ViewController: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
     
     func numberButton(num: Int){
-        if (A == 0){
-            A = num
+        if (A == "0"){
+            A = String(num)
         }
         else {
-            A *= 10
-            A += num
+            A += String(num)
         }
-        resultLabel.text = String(A)
+        if floor(Double(A)!) == Double(A) {
+            resultLabel.text = String(Int(Double(A)!))
+        }
+        else{
+            resultLabel.text = A
+        }
     }
     
     func endOperation(){
         if (op == "plus"){
-            C += A
-            A = 0
+            C = String(Double(C)!+Double(A)!)
+            A = "0"
         }
         else if (op == "minus"){
-            C -= A
-            A = 0
+            C = String(Double(C)!-Double(A)!)
+            A = "0"
         }
         else if (op == "mul"){
-            C *= A
-            A = 0
+            C = String(Double(C)!*Double(A)!)
+            A = "0"
         }
         else if (op == "div"){
-            C /= A
-            A = 0
+            C = String(Double(C)!/Double(A)!)
+            A = "0"
         }
         op = "none"
-        resultLabel.text = String(C)
+        if floor(Double(C)!) == Double(C) {
+            resultLabel.text = String(Int(Double(C)!))
+        }
+        else{
+            resultLabel.text = C
+        }
     }
     
     @IBAction func oneButton(_ sender: Any) {
@@ -90,55 +99,59 @@ class ViewController: UIViewController {
     }
     
     @IBAction func plusButton(_ sender: Any) {
+        decYN = false
         if (op != "none"){
             endOperation()
         }
         else {
-            if(A != 0){
+            if(A != "0"){
                 C = A
-                A = 0}
+                A = "0"}
         }
         op = "plus"
     }
     
     @IBAction func minusButton(_ sender: Any) {
+        decYN = false
         if (op != "none"){
             endOperation()
         }
         else {
-            if(A != 0){
+            if(A != "0"){
                 C = A
-                A = 0}
+                A = "0"}
         }
         op = "minus"
     }
     
     @IBAction func multiplyButton(_ sender: Any) {
+        decYN = false
         if (op != "none"){
             endOperation()
         }
         else {
-            if(A != 0){
+            if(A != "0"){
                 C = A
-                A = 0}
+                A = "0"}
         }
         op = "mul"
     }
     
     @IBAction func divButton(_ sender: Any) {
+        decYN = false
         if (op != "none"){
             endOperation()
         }
         else {
-            if(A != 0){
+            if(A != "0"){
                 C = A
-                A = 0}
+                A = "0"}
         }
         op = "div"
     }
     
-    
     @IBAction func equalButton(_ sender: Any) {
+        decYN = false
         if (op != "none"){
             endOperation()
         }
@@ -146,15 +159,29 @@ class ViewController: UIViewController {
     }
     
     @IBAction func eraseButton(_ sender: Any) {
-        A = 0
-        C = 0
-        resultLabel.text = String(C)
+        A = "0"
+        C = "0"
+        resultLabel.text = C
     }
     
     @IBAction func deleteButton(_ sender: Any) {
-        if(A != 0){
-            A /= 10
+        if (A != "0"){
+            A = String(A.dropLast())
+            if (A.last == "."){
+                A = String(A.dropLast())
+                decYN = false
+            }
+            if (A == ""){
+                A = "0"
+            }
             resultLabel.text = String(A)
+        }
+    }
+    
+    @IBAction func decimalButton(_ sender: Any) {
+        if(!decYN){
+            A += "."
+            decYN = true
         }
     }
     
