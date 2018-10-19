@@ -10,6 +10,7 @@ import UIKit
 
 var A = 0
 var C = 0
+var dec = 10
 var op = "none"
 
 class ViewController: UIViewController {
@@ -150,12 +151,16 @@ class ViewController: UIViewController {
         resultLabel.text = String(C)
     }
     
+    @IBAction func deleteButton(_ sender: Any) {
+        if(A != 0){
+            A /= 10
+            resultLabel.text = String(A)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-
 }
-
