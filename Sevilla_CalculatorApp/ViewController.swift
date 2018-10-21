@@ -8,12 +8,14 @@
 
 import UIKit
 
-var A = "0"
-var C = "0"
-var decYN = false
-var op = "none"
-
 class ViewController: UIViewController {
+    
+    var A = "0"
+    var C = "0"
+    var decYN = false
+    var op = "none"
+    let maxDigits = 12
+    var numDigits = 0
     
     @IBOutlet weak var resultLabel: UILabel!
     
@@ -31,13 +33,16 @@ class ViewController: UIViewController {
     
     // When the user presses a number button, we add it to the string that represents the whole number
     func numberButton(num: Int){
-        if (A == "0"){
-            A = String(num)
+        if (numDigits < maxDigits){
+            numDigits += 1
+            if (A == "0"){
+                A = String(num)
+            }
+            else {
+                A += String(num)
+            }
+                writeNumber(num: A) // we write it in the result label
         }
-        else {
-            A += String(num)
-        }
-        writeNumber(num: A) // we write it in the result label
     }
     
     // When the user presses an operation button we end the operation that was pending so we can keep on accumulating the result
@@ -107,6 +112,7 @@ class ViewController: UIViewController {
     @IBAction func plusButton(_ sender: Any) {
         // If an operation button is pressed the new number being introduced is not a decimal anymore
         decYN = false
+        numDigits = 0
         if (op != "none"){
             endOperation()
         }
@@ -121,6 +127,7 @@ class ViewController: UIViewController {
     
     @IBAction func minusButton(_ sender: Any) {
         decYN = false
+        numDigits = 0
         if (op != "none"){
             endOperation()
         }
@@ -134,6 +141,7 @@ class ViewController: UIViewController {
     
     @IBAction func multiplyButton(_ sender: Any) {
         decYN = false
+        numDigits = 0
         if (op != "none"){
             endOperation()
         }
@@ -147,6 +155,7 @@ class ViewController: UIViewController {
     
     @IBAction func divButton(_ sender: Any) {
         decYN = false
+        numDigits = 0
         if (op != "none"){
             endOperation()
         }
@@ -160,6 +169,7 @@ class ViewController: UIViewController {
     
     @IBAction func equalButton(_ sender: Any) {
         decYN = false
+        numDigits = 0
         if (op != "none"){
             endOperation()
         }
@@ -171,6 +181,7 @@ class ViewController: UIViewController {
         // Everything is reseted
         A = "0"
         C = "0"
+        numDigits = 0
         decYN = false
         resultLabel.text = C
     }
@@ -179,6 +190,7 @@ class ViewController: UIViewController {
     @IBAction func deleteButton(_ sender: Any) {
         // It only works if there's something in A
         if (A != "0"){
+            numDigits -= 1
             // We take out the last character
             A = String(A.dropLast())
             // If we've taken out all of the decimals, we take out . too
@@ -189,6 +201,7 @@ class ViewController: UIViewController {
             // If we are left with nothing or just a -, we write 0
             if (A == "" || A == "-"){
                 A = "0"
+                numDigits = 0
             }
             writeNumber(num: A)
         }
