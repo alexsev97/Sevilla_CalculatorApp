@@ -17,6 +17,15 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var resultLabel: UILabel!
     
+    func writeNumber(num: String){
+        if floor(Double(num)!) == Double(num) {
+            resultLabel.text = String(Int(Double(num)!))
+        }
+        else{
+            resultLabel.text = num
+        }
+    }
+    
     func numberButton(num: Int){
         if (A == "0"){
             A = String(num)
@@ -24,12 +33,7 @@ class ViewController: UIViewController {
         else {
             A += String(num)
         }
-        if floor(Double(A)!) == Double(A) {
-            resultLabel.text = String(Int(Double(A)!))
-        }
-        else{
-            resultLabel.text = A
-        }
+        writeNumber(num: A)
     }
     
     func endOperation(){
@@ -50,12 +54,7 @@ class ViewController: UIViewController {
             A = "0"
         }
         op = "none"
-        if floor(Double(C)!) == Double(C) {
-            resultLabel.text = String(Int(Double(C)!))
-        }
-        else{
-            resultLabel.text = C
-        }
+        writeNumber(num: C)
     }
     
     @IBAction func oneButton(_ sender: Any) {
@@ -155,12 +154,18 @@ class ViewController: UIViewController {
         if (op != "none"){
             endOperation()
         }
-        resultLabel.text = String(C)
+        if floor(Double(C)!) == Double(C) {
+            resultLabel.text = String(Int(Double(C)!))
+        }
+        else{
+            resultLabel.text = C
+        }
     }
     
     @IBAction func eraseButton(_ sender: Any) {
         A = "0"
         C = "0"
+        decYN = false
         resultLabel.text = C
     }
     
@@ -171,10 +176,10 @@ class ViewController: UIViewController {
                 A = String(A.dropLast())
                 decYN = false
             }
-            if (A == ""){
+            if (A == "" || A == "-"){
                 A = "0"
             }
-            resultLabel.text = String(A)
+            writeNumber(num: A)
         }
     }
     
@@ -182,6 +187,27 @@ class ViewController: UIViewController {
         if(!decYN){
             A += "."
             decYN = true
+        }
+    }
+    
+    @IBAction func posNegButton(_ sender: Any) {
+        if (A != "0"){
+            if (A.prefix(1) != "-"){
+                A.insert("-", at: A.startIndex)
+            }
+            else{
+                A.remove(at: A.startIndex)
+            }
+            writeNumber(num: A)
+        }
+            else if (C != "0"){
+                if (C.prefix(1) != "-"){
+                    C.insert("-", at: C.startIndex)
+                }
+                else{
+                    C.remove(at: C.startIndex)
+                }
+            writeNumber(num: C)
         }
     }
     
